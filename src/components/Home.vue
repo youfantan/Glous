@@ -13,7 +13,7 @@
           <v-card-title>Glous</v-card-title>
           <v-card-text class="text--white">
             <div>业余开发者，初中学生。</div>
-            <div>Spare Developer.Junior school student</div>
+            <div>Spare Developer.Junior school student.</div>
           </v-card-text>
         </v-img>
 
@@ -51,7 +51,7 @@
           <h3 style="margin-top: 20px">👋业余开发者，对有关原神、Minecraft的开发感兴趣。</h3>
           <h3 style="margin-top: 20px">✍️这个网站将记录我的许多开发活动。对于更多信息，请在我的Github上查看。我的大多数项目都托管在Github。</h3>
           <h3 style="margin-top: 20px">⌨️我最熟悉的语言是Java，但我仍然是初学者。</h3>
-          <h3 style="margin-top: 20px">📄你可以点击这个页面的应用栏以切换到其他页面。现在这个站点右关于我的项目和文章的页面。</h3>
+          <h3 style="margin-top: 20px">📄你可以点击这个页面的应用栏以切换到其他页面。现在这个站点有关于我的项目和文章的页面。</h3>
           <h3 style="margin-top: 20px">🏳️我最近在开发KleeBot。KleeBot是一个可以推送有关原神、Minecraft、Pixiv、B站等的消息的QQ机器人。它基于Mirai项目开发。</h3>
           <h3></h3>
         </v-card-text>
