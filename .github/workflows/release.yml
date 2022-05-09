@@ -9,13 +9,20 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@master
+    - name: setup node.js
+      uses: actions/setup-node@v3.1.1
+      with:
+        node-version: 16.15.0
+    - name: build pages
+      run: |
+        npm install
+        npm run build
     - name: deploy pages
-      uses: JamesIves/github-pages-deploy-action@master 
+      uses: JamesIves/github-pages-deploy-action@v4.3.3 
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: release
-        FOLDER: dist
-        BUILD_SCRIPT: npm install && npm run build
+        token: ${{ secrets.ACCESS_TOKEN }}
+        branch: release
+        folder: dist
     - name: upload artifact
       uses: actions/upload-artifact@v3.0.0
       with:
