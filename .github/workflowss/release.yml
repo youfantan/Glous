@@ -1,0 +1,21 @@
+name: release
+on:
+  push
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+    - name: deploy pages
+      uses: JamesIves/github-pages-deploy-action@master 
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: release
+        FOLDER: dist
+        BUILD_SCRIPT: npm install && npm run build
+    - name: upload artifact
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: release
+        path: dist/
