@@ -94,7 +94,9 @@ export default {
     loadmdview(data){
       this.index=3;
       this.data=data;
-    }
+    },
+  },
+  created() {
   }
 };
 </script>

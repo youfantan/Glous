@@ -5,7 +5,7 @@
           outlined
       >
         <v-img
-            src="https://proxy.glous.xyz/image/img-original/img/2022/04/20/04/21/54/97748736_p0.jpg"
+            :src="avatar_src"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
@@ -62,7 +62,17 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  data:()=>({
+    avatar_src: ''
+  }),
+  init(){
+    const choosen=Math.floor(Math.random()*10);
+    this.avatar_src="https://cdn.jsdelivr.net/gh/youfantan/youfantan.github.io@master/public/image/"+choosen+".jpg"
+  },
+  created() {
+    this.init()
+  }
 }
 </script>
 

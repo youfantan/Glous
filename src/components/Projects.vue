@@ -2,7 +2,7 @@
 <v-app>
   <v-row>
     <v-col cols="8">
-      <v-card img="https://proxy.glous.xyz/image/img-original/img/2022/05/01/22/32/06/98028426_p0.png">
+      <v-card img="https://cdn.jsdelivr.net/gh/youfantan/youfantan.github.io@master/public/image/kleebot.jpg">
         <v-card-title>
           KleeBot
         </v-card-title>
