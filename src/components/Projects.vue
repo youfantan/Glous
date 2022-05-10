@@ -66,11 +66,6 @@ export default {
   }),
   methods:{
     initInfo:async function () {
-      const op={
-        headers:{
-          "Authorization":"token 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"
-        }
-      }
       this.$http.get('https://api.github.com/repos/youfantan/KleeBot',op).then((resp)=>{
         let json=resp.data;
         this.kleebot.buildInfo[0]={
