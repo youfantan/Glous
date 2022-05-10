@@ -5,7 +5,7 @@
         color="indigo lighten-3"
         dark
     >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = true"><v-icon>menu</v-icon></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <h1
             style="margin-left: 20px"
@@ -20,7 +20,7 @@
           text
       >
         <span class="mr-2">view This page in Github</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon>open_in_new</v-icon>
       </v-btn>
     </v-app-bar>
       <v-container fluid style="margin-top: 70px">
@@ -39,19 +39,19 @@
             >
               <v-list-item @click="show(0)">
                 <v-list-item-icon>
-                  <v-icon>mdi-home</v-icon>
+                  <v-icon>home</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>Home</v-list-item-title>
               </v-list-item>
               <v-list-item @click="show(1)">
                 <v-list-item-icon>
-                  <v-icon>mdi-code-tags</v-icon>
+                  <v-icon>code</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>Projects</v-list-item-title>
               </v-list-item>
               <v-list-item @click="show(2)">
                 <v-list-item-icon>
-                  <v-icon>mdi-file-document</v-icon>
+                  <v-icon>article</v-icon>
                 </v-list-item-icon>
                 <v-list-item-title>Articles</v-list-item-title>
               </v-list-item>

@@ -4,8 +4,16 @@
       <v-card
           outlined
       >
+        <v-skeleton-loader
+            v-if="loading"
+            :transition="transition"
+            height="400"
+            type="card"
+        >
+        </v-skeleton-loader>
         <v-img
             :src="avatar_src"
+            v-show="!loading"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
@@ -21,7 +29,7 @@
           <v-spacer></v-spacer>
 
           <v-btn icon href="https://github.com/youfantan" target="_blank">
-            <v-icon>mdi-github</v-icon>
+            <v-icon>$vuetify.icons.githubicon</v-icon>
           </v-btn>
 
           <v-btn icon href="https://www.zhihu.com/people/shan-dian-ku-li-she" target="_blank">
@@ -61,14 +69,33 @@
 </template>
 
 <script>
+
 export default {
   name: "Home",
   data:()=>({
+    loading: true,
+    transition: 'scale-transition',
     avatar_src: ''
   }),
-  init(){
-    const choosen=Math.floor(Math.random()*10);
-    this.avatar_src="https://cdn.jsdelivr.net/gh/youfantan/youfantan.github.io@master/public/image/"+choosen+".jpg"
+  methods:{
+    arrayBufferToBase64 (buffer) {
+      let binary = '';
+      const bytes = new Uint8Array(buffer);
+      const len = bytes.byteLength;
+      for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i])
+      }
+      return window.btoa(binary)
+    },
+    init() {
+      const chosen = Math.floor(Math.random() * 4);
+      const url = "https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/" + chosen + ".b64";
+      this.$http.get(url)
+          .then(response => {
+            this.avatar_src='data:image/jpg;base64,'+response.data
+            this.loading=false;
+      })
+    }
   },
   created() {
     this.init()
