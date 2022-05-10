@@ -90,7 +90,7 @@ export default {
         }
         this.kleebot.build_url="https://github.com/youfantan/KleeBot/actions"
       })
-      this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.jpg').then((resp)=>{
+      this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.b64').then((resp)=>{
         this.kleebot.background_img_src='data:image/jpg;base64,'+resp.data;
       })
     }
