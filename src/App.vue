@@ -97,6 +97,8 @@ export default {
     },
   },
   created() {
+    const build_info=require('./assets/build_info.json');
+    console.log(build_info.commit_id)
   }
 };
 </script>

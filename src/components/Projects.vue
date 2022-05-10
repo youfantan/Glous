@@ -3,7 +3,8 @@
   <v-row>
     <v-col cols="8">
       <v-skeleton-loader v-if="loading" :transition="transition" height="400" type="card"></v-skeleton-loader>
-      <v-card :img="kleebot.background_img_src" v-show="!loading">
+      <v-card v-show="!loading">
+        <v-img :src="kleebot.background_img_src" height="200px" position="center center" v-show="!loading"></v-img>
         <v-card-title>
           KleeBot
         </v-card-title>
@@ -14,13 +15,10 @@
           <img class="badge" src="https://img.shields.io/github/forks/youfantan/KleeBot?style=for-the-badge">
           <img class="badge" src="https://img.shields.io/github/license/youfantan/KleeBot?style=for-the-badge">
           <v-divider></v-divider>
-            <v-card
-                color="rgba(0,0,0,0)"
-            >
+            <v-card>
               <v-card-title>Development Info</v-card-title>
               <v-card-text>
-                <v-list shaped tile flat color="rgba(0,0,0,0)"
-                >
+                <v-list shaped tile flat>
                   <v-list-item-group color="teal">
                     <v-list-item
                         :key='i'
@@ -66,8 +64,8 @@ export default {
   }),
   methods:{
     initInfo:async function () {
-      this.$http.get('https://api.github.com/repos/youfantan/KleeBot').then((resp)=>{
-        let json=resp.data;
+      await this.$http.get('https://api.github.com/repos/youfantan/KleeBot').then(async (resp)=>{
+        let json=await resp.data;
         this.kleebot.buildInfo[0]={
           key:"Language",
           value:json.language
@@ -82,23 +80,23 @@ export default {
         }
         this.kleebot.clone_url=json.clone_url
       })
-      this.$http.get('https://api.github.com/repos/youfantan/KleeBot/commits').then((resp)=>{
-        let json=resp.data;
+      await this.$http.get('https://api.github.com/repos/youfantan/KleeBot/commits').then(async (resp)=>{
+        let json=await resp.data;
         this.kleebot.buildInfo[2]={
           key:"Latest Commit",
           value:json[0].sha
         }
         this.kleebot.build_url="https://github.com/youfantan/KleeBot/actions"
       })
-      this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.b64').then((resp)=>{
-        this.kleebot.background_img_src='data:image/jpg;base64,'+resp.data;
+      await this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.b64').then(async (resp)=>{
+        this.kleebot.background_img_src='data:image/jpg;base64,'+await resp.data;
+        console.log(this.kleebot.background_img_src)
       })
     }
   },
   async created() {
     await this.initInfo();
-    //this.loading=false;
-    this.$forceUpdate();
+    this.loading=false;
   }
 }
 </script>
