@@ -66,7 +66,7 @@ export default {
   }),
   methods:{
     initInfo:async function () {
-      this.$http.get('https://api.github.com/repos/youfantan/KleeBot',op).then((resp)=>{
+      this.$http.get('https://api.github.com/repos/youfantan/KleeBot').then((resp)=>{
         let json=resp.data;
         this.kleebot.buildInfo[0]={
           key:"Language",
@@ -82,7 +82,7 @@ export default {
         }
         this.kleebot.clone_url=json.clone_url
       })
-      this.$http.get('https://api.github.com/repos/youfantan/KleeBot/commits',op).then((resp)=>{
+      this.$http.get('https://api.github.com/repos/youfantan/KleeBot/commits').then((resp)=>{
         let json=resp.data;
         this.kleebot.buildInfo[2]={
           key:"Latest Commit",
