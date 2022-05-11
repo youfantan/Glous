@@ -48,7 +48,7 @@
           <v-card-text>
             <h3 style="margin-top: 20px">👋Spare developer.Interested in develop works about Genshin Impact, Minecraft.</h3>
             <h3 style="margin-top: 20px">✍️This site will record some of my develop activities.For more information,please visit my github account.Most of my personal projects are hosted in github.</h3>
-            <h3 style="margin-top: 20px">⌨️The language I am most familiar with is Java but I'm still a junior developer of Java</h3>
+            <h3 style="margin-top: 20px">⌨️The language I am most familiar with is Java but I'm still a junior developer of Java.</h3>
             <h3 style="margin-top: 20px">📄You can click the app bar to switch the pages.Now this site have page of Projects and Pages.</h3>
             <h3 style="margin-top: 20px">🏳️I'm developing KleeBot recently.KleeBot is a QQ bot that can post information of Genshin, Minecraft, Pixiv, Bilibili etc.The project is based on Mirai.</h3>
           </v-card-text>
