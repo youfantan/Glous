@@ -15,7 +15,7 @@
           <img class="badge" src="https://img.shields.io/github/forks/youfantan/KleeBot?style=for-the-badge">
           <img class="badge" src="https://img.shields.io/github/license/youfantan/KleeBot?style=for-the-badge">
           <v-divider></v-divider>
-            <v-card>
+            <v-card outlined>
               <v-card-title>Development Info</v-card-title>
               <v-card-text>
                 <v-list shaped tile flat>
@@ -90,7 +90,6 @@ export default {
       })
       await this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.b64').then(async (resp)=>{
         this.kleebot.background_img_src='data:image/jpg;base64,'+await resp.data;
-        console.log(this.kleebot.background_img_src)
       })
     }
   },

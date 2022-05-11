@@ -15,7 +15,7 @@
           <v-img
               :src="avatar_src"
               v-show="!loading"
-              class="white--text align-end"
+              class="grey-text align-end"
               height="400px"
           >
             <v-card-title>Glous</v-card-title>
@@ -39,7 +39,31 @@
             <v-btn icon href="https://space.bilibili.com/344835892?spm_id_from=333.1007.0.0" target="_blank">
               <v-icon>$vuetify.icons.bilibilicon</v-icon>
             </v-btn>
+            <v-btn icon >
+              <v-icon class="material-symbols-outlined">
+                rss_feed
+              </v-icon>
+            </v-btn>
           </v-card-actions>
+        </v-card>
+        <v-skeleton-loader
+            v-if="!article.loaded"
+            :transition="transition"
+            height="200"
+            type="card"
+        >
+        </v-skeleton-loader>
+        <v-card style="margin-top: 20px" @click="loadArticle" v-if="article.loaded">
+          <v-card-title>
+              推荐文章 | Daily Article
+          </v-card-title>
+          <v-card-subtitle>
+            {{article.title}}
+          </v-card-subtitle>
+          <v-card-text>
+            <p>{{article.description}}</p>
+            <strong>阅读本文约需要 {{article.time_cost}} | 本文上传于 {{article.time}}</strong>
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col cols="s6">
@@ -66,29 +90,6 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-footer
-        style="margin-top: 70px"
-        color="indigo lighten-2"
-        padless
-        class="font-weight-medium"
-    >
-      <v-row
-          justify="center"
-          no-gutters
-      >
-        <v-col cols="2"><v-btn rounded color="white" text>Home</v-btn></v-col>
-        <v-col cols="2"><v-btn rounded color="white" text>About Site</v-btn></v-col>
-        <v-col cols="2"><v-btn rounded color="white" text>Contact</v-btn></v-col>
-        <v-col cols="2"><v-btn rounded color="white" text>Friend Links</v-btn></v-col>
-        <v-col cols="2"><v-btn rounded color="white" text>License</v-btn></v-col>
-      </v-row>
-        <v-col
-            class="text-center indigo lighten-3"
-            cols="12"
-        >
-          <a target="_blank" style="text-decoration: none;color: white" href="http://www.freecdn.pw/?zzwz" title="免费云加速（FreeCDN），为您免费提供网站加速和网站防御（DDOS、CC攻击）" alt="免费云加速（FreeCDN），为您免费提供网站加速和网站防御（DDOS、CC攻击）">本站由免费云加速（FreeCDN）提供网站加速和攻击防御服务</a>
-        </v-col>
-    </v-footer>
   </div>
 </template>
 
@@ -99,7 +100,15 @@ export default {
   data:()=>({
     loading: true,
     transition: 'scale-transition',
-    avatar_src: ''
+    avatar_src: '',
+    article:{
+      loaded: false,
+      url: '',
+      title: '',
+      time: '',
+      time_cost: '',
+      description: ''
+    }
   }),
   methods:{
     arrayBufferToBase64 (buffer) {
@@ -119,6 +128,25 @@ export default {
             this.avatar_src='data:image/jpg;base64,'+response.data
             this.loading=false;
       })
+      this.$http.get('articles/articles.json').then((resp)=>{
+        const data_articles=resp.data.articles;
+        console.log(data_articles)
+        const article_chosen=data_articles[Math.floor(Math.random()*data_articles.length)];
+        this.article={
+          loaded: true,
+          url: article_chosen.url,
+          title: article_chosen.title,
+          time: article_chosen.time,
+          time_cost: article_chosen.time_cost,
+          description: article_chosen.description
+        }
+        this.$forceUpdate()
+      })
+    },
+    loadArticle(){
+      this.$http.get(this.article.url).then((resp)=>{
+        this.$emit('loadmdview',resp.data)
+      })
     }
   },
   created() {
@@ -127,6 +155,12 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+}
 </style>

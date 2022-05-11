@@ -32,8 +32,7 @@ export default {
   methods:{
     loadMarkdownView(url){
       this.$http.get(url).then((resp)=>{
-        const data=resp.data;
-        this.$emit('loadmdview',data)
+        this.$emit('loadmdview',resp.data)
       })
     },
     initArticles:function () {

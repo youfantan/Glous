@@ -3,6 +3,8 @@ import Vuetify from 'vuetify/lib/framework';
 import ZhihuSvg from '@/components/zhihu.vue';
 import BilbiliSvg from '@/components/bilbili.vue'
 import GithubSvg from '@/components/github.vue'
+import TwitterSvg from '@/components/twitter.vue'
+import DiscordSvg from '@/components/discord.vue'
 import VueResource  from 'vue-resource'
 
 Vue.use(VueResource)
@@ -20,6 +22,12 @@ export default new Vuetify({
             },
             githubicon:{
                 component: GithubSvg
+            },
+            twittericon:{
+                component: TwitterSvg
+            },
+            discordicon:{
+                component: DiscordSvg
             }
         }
     }

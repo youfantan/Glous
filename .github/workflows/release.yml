@@ -13,6 +13,12 @@ jobs:
       uses: actions/setup-node@v3.1.1
       with:
         node-version: 16.15.0
+    - name: execute pre-build tasks
+      run: |
+        echo $env.RUNNER_OS	>> os
+        echo $env.GITHUB_SHA >> sha
+        echo $env.RUNNER_ARCH >> arch
+        node build.js
     - name: build pages
       run: |
         npm install
