@@ -12,3 +12,4 @@ const build_info={
     arch:arch
 }
 fs.writeFileSync('src/assets/build_info.json',JSON.stringify(build_info))
+console.log(build_info)
