@@ -15,9 +15,9 @@ jobs:
         node-version: 16.15.0
     - name: execute pre-build tasks
       run: |
-        echo $RUNNOR_OS	>> os
+        echo $RUNNOR_NAME	>> os
         echo $GITHUB_SHA >> sha
-        echo $github.RUNNOR_ARCH >> arch
+        echo $RUNNOR_ARCH >> arch
         node build.js
     - name: build pages
       run: |
