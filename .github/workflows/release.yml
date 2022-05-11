@@ -17,7 +17,6 @@ jobs:
       run: |
         echo $RUNNER_NAME	>> os
         echo $GITHUB_SHA >> sha
-        echo $RUNNER_ARCH >> arch
         node build.js
     - name: build pages
       run: |
