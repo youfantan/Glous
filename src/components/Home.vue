@@ -122,7 +122,7 @@ export default {
     },
     init() {
       const chosen = Math.floor(Math.random() * 4);
-      const url = "https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/" + chosen + ".b64";
+      const url = "./image/" + chosen + ".b64";
       this.$http.get(url)
           .then(response => {
             this.avatar_src='data:image/jpg;base64,'+response.data

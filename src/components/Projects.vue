@@ -64,6 +64,11 @@ export default {
   }),
   methods:{
     initInfo:async function () {
+      await this.$http.get('./image/kleebot.b64').then(async (resp)=>{
+        this.kleebot.background_img_src='data:image/jpg;base64,'+await resp.data;
+      })
+    },
+    asyncInit:async function(){
       await this.$http.get('https://api.github.com/repos/youfantan/KleeBot').then(async (resp)=>{
         let json=await resp.data;
         this.kleebot.buildInfo[0]={
@@ -88,12 +93,10 @@ export default {
         }
         this.kleebot.build_url="https://github.com/youfantan/KleeBot/actions"
       })
-      await this.$http.get('https://raw.githubusercontents.com/youfantan/youfantan.github.io/master/public/image/kleebot.b64').then(async (resp)=>{
-        this.kleebot.background_img_src='data:image/jpg;base64,'+await resp.data;
-      })
     }
   },
   async created() {
+    this.asyncInit();
     await this.initInfo();
     this.loading=false;
   }
