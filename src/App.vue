@@ -92,10 +92,7 @@
             Powered By Vue.js and Vuetify.js
           </div>
           <div style="margin-top: 20px">
-            <a target="_blank" class="grey--text" style="text-decoration: none;" href="http://www.freecdn.pw/?zzwz" title="免费云加速（FreeCDN），为您免费提供网站加速和网站防御（DDOS、CC攻击）" alt="免费云加速（FreeCDN），为您免费提供网站加速和网站防御（DDOS、CC攻击）">本站由免费云加速（FreeCDN）提供网站加速和攻击防御服务</a>  ·
-            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.github.com/">Static resources hosted by Github Pages</a>  ·
-            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.vercel.com/">Oversea CDN acceleration by Vercel</a>  ·
-            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.cloudflare.com/">DDoS Protection by Cloudflare</a>
+            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.github.com/">Static resources hosted by Github Pages</a>
           </div>
           <div>
           </div>
