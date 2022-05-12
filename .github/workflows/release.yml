@@ -1,5 +1,5 @@
 name: release
-on: 
+on:
   push:
     branches:
       - master
@@ -7,29 +7,40 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@master
-    - name: setup node.js
-      uses: actions/setup-node@v3.1.1
-      with:
-        node-version: 16.15.0
-    - name: execute pre-build tasks
-      run: |
-        echo $GITHUB_SHA >> sha
-        echo $RUNNER_ARCH >> arch
-        node build.js
-    - name: build pages
-      run: |
-        npm install
-        npm run build
-    - name: deploy pages
-      uses: JamesIves/github-pages-deploy-action@v4.3.3 
-      with:
-        token: ${{ secrets.ACCESS_TOKEN }}
-        branch: release
-        folder: dist
-    - name: upload artifact
-      uses: actions/upload-artifact@v3.0.0
-      with:
-        name: release
-        path: dist/
+      - name: checkout
+        uses: actions/checkout@master
+      - name: setup node.js
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: 16.15.0
+      - name: execute pre-build tasks
+        run: |
+          echo $GITHUB_SHA >> sha
+          echo $RUNNER_ARCH >> arch
+          node build.js
+      - name: build pages
+        run: |
+          npm install
+          npm run build
+      - name: deploy pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          branch: release
+          folder: dist
+      - name: upload artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: release
+          path: dist/
+      - name: install tencent COSCMD
+        run: sudo pip install coscmd
+      - name: configure COS bucket
+        env:
+          SECRET_ID: ${{ secrets.TENCENT_CLOUD_ACCESS_TOKEN_ID }}
+          SECRET_KEY: ${{ secrets.TENCENT_CLOUD_ACESS_TOKEN_SECRET }}
+          BUCKET: pages-1258092949
+          REGION: ap-hongkong
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+      - name: upload static files to COS
+        run: coscmd upload -rs --delete -f ./dist/ /
