@@ -122,7 +122,7 @@ export default {
     },
     init() {
       const chosen = Math.floor(Math.random() * 4);
-      const url = "./image/" + chosen + ".b64";
+      const url = "https://static-1258092949.cos.ap-nanjing.myqcloud.com/image/" + chosen + ".b64";
       this.$http.get(url)
           .then(response => {
             this.avatar_src='data:image/jpg;base64,'+response.data
