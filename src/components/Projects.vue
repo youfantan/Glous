@@ -64,7 +64,7 @@ export default {
   }),
   methods:{
     initInfo:async function () {
-      await this.$http.get('./image/kleebot.b64').then(async (resp)=>{
+      await this.$http.get('https://static-1258092949.cos.ap-nanjing.myqcloud.com/image/kleebot.b64').then(async (resp)=>{
         this.kleebot.background_img_src='data:image/jpg;base64,'+await resp.data;
       })
     },
