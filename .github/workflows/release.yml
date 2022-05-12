@@ -38,7 +38,7 @@ jobs:
       - name: configure COS bucket
         env:
           SECRET_ID: ${{ secrets.TENCENT_CLOUD_ACCESS_TOKEN_ID }}
-          SECRET_KEY: ${{ secrets.TENCENT_CLOUD_ACESS_TOKEN_SECRET }}
+          SECRET_KEY: ${{ secrets.TENCENT_CLOUD_ACCESS_TOKEN_SECRET }}
           BUCKET: pages-1258092949
           REGION: ap-hongkong
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
