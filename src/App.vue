@@ -92,7 +92,7 @@
             Powered By Vue.js and Vuetify.js
           </div>
           <div style="margin-top: 20px">
-            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.github.com/">Static resources hosted by Github Pages</a>
+            <a target="_blank" class="grey--text" style="text-decoration: none;" href="https://www.github.com/">Deploy in Github</a>
           </div>
           <div>
           </div>
