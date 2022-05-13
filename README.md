@@ -1,3 +1,3 @@
-# Glous的小破窝（
+# Glous的个人网站
 
-本站使用Vue.js与Vuetify.js编写。
+以后的文章和一些项目的发布都会整合在这里。项目使用Vue.js和Vuetify.js编写，第一次写前端，代码质量很低。
