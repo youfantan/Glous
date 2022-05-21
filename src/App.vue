@@ -61,7 +61,7 @@
         <Home @loadmdview="loadmdview" v-if="index===0"></Home>
         <Projects  v-if="index===1"></Projects>
         <Articles @loadmdview="loadmdview" v-if="index===2"></Articles>
-        <MarkdownViewer v-bind:style="{minHeight: min_height+'px'}" v-if="index===3" v-bind:md-src="data"></MarkdownViewer>
+        <MarkdownViewer class="markdown-body" v-bind:style="{minHeight: min_height+'px'}" v-if="index===3" v-bind:md-src="data"></MarkdownViewer>
       </v-container>
     <v-footer
         color="blue-grey darken-4"
@@ -158,6 +158,10 @@ export default {
 body{
   #app{
     font-family: "Ubuntu","Noto Sans SC",sans-serif;
+    pre code{
+      background-color: rgba(0,0,0,0);
+      font-family: "JetBrains Mono",sans-serif,"Noto Sans SC",sans-serif;
+    }
   }
 }
 </style>
